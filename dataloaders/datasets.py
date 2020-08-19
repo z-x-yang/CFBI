@@ -11,6 +11,34 @@ from PIL import Image
 import random
 from utils.image import _palette
 
+class _EVAL_TEST(Dataset):
+    def __init__(self, transform, seq_name):
+        self.seq_name = seq_name
+        self.num_frame = 10
+        self.transform = transform
+
+    def __len__(self):
+        return self.num_frame
+
+    def __getitem__(self, idx):
+        current_frame_obj_num = 2
+        height = 400
+        width = 400
+        img_name = 'test{}.jpg'.format(idx)
+        current_img = np.zeros((height, width, 3)).astype(np.float32)
+        if idx == 0:
+            current_label = (current_frame_obj_num * np.ones((height, width))).astype(np.uint8)
+            sample = {'current_img':current_img, 'current_label':current_label}
+        else:
+            sample = {'current_img':current_img}
+
+        sample['meta'] = {'seq_name':self.seq_name, 'frame_num':self.num_frame, 'obj_num':current_frame_obj_num,
+                          'current_name':img_name, 'height':height, 'width':width, 'flip':False}
+
+        if self.transform is not None:
+            sample = self.transform(sample)
+        return sample
+    
 class EVAL_TEST(object):
     def __init__(self, transform=None, result_root=None):
         self.transform = transform
