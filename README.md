@@ -38,7 +38,7 @@ YouTube-VOS (Eval on Val 2018):
 ---------| :-----------: | :--------: | :--------: | :----------: | :----------: | :------------------------: | :------:
 ResNet101-CFBI | ResNet101-DeepLabV3+ | **81.9** | **86.3** | **75.6** | **83.4** | 3.48 | [Click](https://drive.google.com/file/d/1ZhoNOcDXGG-PpFXhCixs-L3yA255Wup8/view?usp=sharin) 
 ResNet101-F16-CFBI | ResNet101-DeepLabV3+ | - | - | - | - | 4.62 (32.8%↑) | The same as above
-ResNet101-Fast-CFBI | ResNet101-DeepLabV3+ | - | - | - | - | **7.56 (117.2%↑)** | The same as above
+ResNet101-Fast-CFBI | ResNet101-DeepLabV3+ | - | - | - | - | **7.61 (118.7%↑)** | The same as above
 
 DAVIS (Eval on Val 2017):
 
