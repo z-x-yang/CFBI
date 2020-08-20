@@ -33,14 +33,14 @@ Some video segmentation results:
 YouTube-VOS (Eval on Val 2018):
 
 **Name** | **Backbone**  | **J Seen** | **F Seen** | **J Unseen** | **F Unseen** | **Multi-Obj** <br> **FPS** | **Link** 
----------| ------------- | ---------- | ---------- | ------------ | ------------ | -------------------------- | --------
+---------| :-----------: | :--------: | :--------: | :----------: | :----------: | :------------------------: | :------:
 ResNet101-CFBI | ResNet101-DeepLabV3+ | **81.9** | **86.3** | **75.6** | **83.4** | 3.48 | [Click](https://drive.google.com/file/d/1ZhoNOcDXGG-PpFXhCixs-L3yA255Wup8/view?usp=sharin) 
 ResNet101-Fast-CFBI | ResNet101-DeepLabV3+ | - | - | - | - | **8.17** | The same as above
 
 DAVIS (Eval on Val 2017):
 
 **Name** | **Backbone**  | **J score** | **F score** | **Multi-Obj** <br> **FPS** | **Link** 
----------| ------------- | ----------- | ----------- | -------------------------- | -------- 
+---------| :-----------: | :---------: | :---------: | :------------------------: | :------:
 ResNet101-CFBI-DAVIS | ResNet101-DeepLabV3+ | **79.3** | **84.5** | 5.88 | [Click](https://drive.google.com/file/d/1ZhoNOcDXGG-PpFXhCixs-L3yA255Wup8/view?usp=sharin) 
 ResNet101-Fast-CFBI-DAVIS | ResNet101-DeepLabV3+ | 77.5 | 83.2 | **8.77** | The same as above
 
