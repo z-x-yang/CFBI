@@ -180,7 +180,7 @@ class CFBI(nn.Module):
                     all_reference_labels=all_reference_labels,
                     n_chunks=cfg.TEST_GLOBAL_CHUNKS,
                     dis_bias=dis_bias, 
-                    atrous_rate=cfg.TEST_GLOABL_ATROUS_RATE,
+                    atrous_rate=cfg.TEST_GLOBAL_ATROUS_RATE,
                     use_float16=cfg.MODEL_FLOAT16_MATCHING)
     
     

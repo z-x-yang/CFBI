@@ -108,7 +108,7 @@ class Configuration():
         self.TEST_MAX_SIZE = 800 * 1.3 if self.TEST_MULTISCALE == [1.] else 800
         self.TEST_WORKERS = 4
         self.TEST_GLOBAL_CHUNKS = 4
-        self.TEST_GLOABL_ATROUS_RATE = 1
+        self.TEST_GLOBAL_ATROUS_RATE = 1
         self.TEST_LOCAL_ATROUS_RATE = 1
         self.TEST_LOCAL_PARALLEL = True
 
