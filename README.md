@@ -24,7 +24,7 @@ Some video segmentation results:
 2. Evaluating:
     * **YouTube-VOS**: Download pretrained CFBI, [ResNet101-CFBI](https://drive.google.com/file/d/1ZhoNOcDXGG-PpFXhCixs-L3yA255Wup8/view?usp=sharing), to `pretrain_models`, and then run `bash ytb_eval.sh`. After the evaluation, the result will be packed into a Zip file, which you need to send to [official evaluation server](https://competitions.codalab.org/competitions/19544) to calculate a score. For 2019 version, use this [server](https://competitions.codalab.org/competitions/20127) instead. The pretrained CFBI has been trained on YouTube-VOS using a large batch size (20), which boosts the performance (J&F) to `81.8%` on the validation split of YouTube-VOS 2018.
     * **DAVIS**: Download pretrained CFBI, [ResNet101-CFBI-DAVIS](https://drive.google.com/file/d/1cRC-kEH5Is2dSnHrFoLIbTxXp4imZfj3/view?usp=sharing), to `pretrain_models`, and then run `bash davis_eval.sh`. After the evaluation, please use [official code](https://github.com/davisvideochallenge/davis2017-evaluation) to calculate a score, which should be `81.9%` (J&F).
-    * **Fast CFBI**: For reduce the memory usage, we also provide a fast setting in `ytb_eval_fast.sh`. The fast setting enables using `float16` in the matching process of CFBI. Besides, we apply an `atrous strategy` in the global matching of CFBI for further efficiency (The discussion of atrous matching will be submitted to our Arxiv paper soon). Moreover, we limit the long edge of each frame to be no more than `800` pixels. The fast setting will save a large amount of memory and significantly improve the inference speed of CFBI. However, this will only lose a little performance on YouTube-VOS.
+    * **Fast CFBI**: For reduce the memory usage, we also provide a fast setting in `ytb_eval_fast.sh`. The fast setting enables using `float16` in the matching process of CFBI. Besides, we apply an `atrous strategy` in the global matching of CFBI for further efficiency (The discussion of atrous matching will be submitted to our Arxiv paper soon). Moreover, we limit the long edge of each frame to be no more than `800` pixels. The fast setting will save a large amount of memory and significantly improve the inference speed of CFBI. However, this will only lose very little performance.
     * Another way for saving memory is to increase the number of `--global_chunks`. This will not affect performance but will make the network speed slightly slower.
 
 ## Model Zoo
@@ -35,14 +35,14 @@ YouTube-VOS (Eval on Val 2018):
 **Name** | **Backbone**  | **J Seen** | **F Seen** | **J Unseen** | **F Unseen** | **Multi-Obj** <br> **FPS** | **Link** 
 ---------| :-----------: | :--------: | :--------: | :----------: | :----------: | :------------------------: | :------:
 ResNet101-CFBI | ResNet101-DeepLabV3+ | **81.9** | **86.3** | **75.6** | **83.4** | 3.48 | [Click](https://drive.google.com/file/d/1ZhoNOcDXGG-PpFXhCixs-L3yA255Wup8/view?usp=sharin) 
-ResNet101-Fast-CFBI | ResNet101-DeepLabV3+ | 81.5 | 85.9 | 74.5 | 82.2 | **8.23** | The same as above
+ResNet101-Fast-CFBI | ResNet101-DeepLabV3+ | - | - | - | - | - | The same as above
 
 DAVIS (Eval on Val 2017):
 
 **Name** | **Backbone**  | **J score** | **F score** | **Multi-Obj** <br> **FPS** | **Link** 
 ---------| :-----------: | :---------: | :---------: | :------------------------: | :------:
 ResNet101-CFBI-DAVIS | ResNet101-DeepLabV3+ | **79.3** | **84.5** | 5.88 | [Click](https://drive.google.com/file/d/1ZhoNOcDXGG-PpFXhCixs-L3yA255Wup8/view?usp=sharin) 
-ResNet101-Fast-CFBI-DAVIS | ResNet101-DeepLabV3+ | 77.5 | 83.2 | **8.77** | The same as above
+ResNet101-Fast-CFBI-DAVIS | ResNet101-DeepLabV3+ | 79.2 | 84.4 | **7.38** | The same as above
 
 
 ## Citing
