@@ -30,19 +30,23 @@ Some video segmentation results:
 ## Model Zoo
 **We recorded the inference speed of CFBI by using one NVIDIA Tesla V100 GPU. Besides, we used a multi-object speed instead of single-object. Almost every sequence in VOS datasets contains multiple objects, and CFBI is good at processing all of them simultaneously.**
 
+`F16` denotes using `float16` in the matching process. `Fast` means using both `float16` and `atrous strategy` in inference stage.
+
 YouTube-VOS (Eval on Val 2018):
 
 **Name** | **Backbone**  | **J Seen** | **F Seen** | **J Unseen** | **F Unseen** | **Multi-Obj** <br> **FPS** | **Link** 
 ---------| :-----------: | :--------: | :--------: | :----------: | :----------: | :------------------------: | :------:
 ResNet101-CFBI | ResNet101-DeepLabV3+ | **81.9** | **86.3** | **75.6** | **83.4** | 3.48 | [Click](https://drive.google.com/file/d/1ZhoNOcDXGG-PpFXhCixs-L3yA255Wup8/view?usp=sharin) 
-ResNet101-Fast-CFBI | ResNet101-DeepLabV3+ | - | - | - | - | **4.62** | The same as above
+ResNet101-F16-CFBI | ResNet101-DeepLabV3+ | - | - | - | - | **4.62** | The same as above
+ResNet101-Fast-CFBI | ResNet101-DeepLabV3+ | - | - | - | - | - | The same as above
 
 DAVIS (Eval on Val 2017):
 
 **Name** | **Backbone**  | **J score** | **F score** | **Multi-Obj** <br> **FPS** | **Link** 
 ---------| :-----------: | :---------: | :---------: | :------------------------: | :------:
 ResNet101-CFBI-DAVIS | ResNet101-DeepLabV3+ | **79.3** | **84.5** | 5.88 | [Click](https://drive.google.com/file/d/1ZhoNOcDXGG-PpFXhCixs-L3yA255Wup8/view?usp=sharin) 
-ResNet101-Fast-CFBI-DAVIS | ResNet101-DeepLabV3+ | 79.2 | 84.4 | **7.38** | The same as above
+ResNet101-F16-CFBI-DAVIS | ResNet101-DeepLabV3+ | 79.2 | 84.4 | **7.38** | The same as above
+ResNet101-Fast-CFBI-DAVIS | ResNet101-DeepLabV3+ | - | - | - | The same as above
 
 
 ## Citing
