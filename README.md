@@ -35,7 +35,7 @@ YouTube-VOS (Eval on Val 2018):
 **Name** | **Backbone**  | **J Seen** | **F Seen** | **J Unseen** | **F Unseen** | **Multi-Obj** <br> **FPS** | **Link** 
 ---------| :-----------: | :--------: | :--------: | :----------: | :----------: | :------------------------: | :------:
 ResNet101-CFBI | ResNet101-DeepLabV3+ | **81.9** | **86.3** | **75.6** | **83.4** | 3.48 | [Click](https://drive.google.com/file/d/1ZhoNOcDXGG-PpFXhCixs-L3yA255Wup8/view?usp=sharin) 
-ResNet101-Fast-CFBI | ResNet101-DeepLabV3+ | - | - | - | - | - | The same as above
+ResNet101-Fast-CFBI | ResNet101-DeepLabV3+ | - | - | - | - | **4.62** | The same as above
 
 DAVIS (Eval on Val 2017):
 
