@@ -43,6 +43,7 @@ ResNet101-F16-CFBI | ResNet101-DeepLabV3+ |**81.9** | **86.4** | **75.6** | 83.3
 ResNet101-Fast-CFBI | ResNet101-DeepLabV3+ | **81.9** | **86.4** | **75.6** | 83.1 |**81.8** | **7.61 (118.7%↑)** | The same as above
 MobileNetV2-CFBI | MobileNetV2-DeepLabV3+ | - | - | - | - | - | 3.88 | [Click](https://drive.google.com/file/d/1L_pA2UzBbOWyyJyNmgnXqnqDvFfkdXpO/view?usp=sharing)
 MobileNetV2-Fast-CFBI | MobileNetV2-DeepLabV3+ | - | - | - | - | - | **9.69 (150.0↑%)** | The same as above
+
 **DAVIS** (Eval on Val 2017):
 
 In the inference stage, we ran using the default size of DAVIS (480p).
