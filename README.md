@@ -24,15 +24,16 @@ Some video segmentation results:
 2. Evaluating:
     * **YouTube-VOS**: Download pretrained CFBI, [ResNet101-CFBI](https://drive.google.com/file/d/1ZhoNOcDXGG-PpFXhCixs-L3yA255Wup8/view?usp=sharing), to `pretrain_models`, and then run `bash ytb_eval.sh`. After the evaluation, the result will be packed into a Zip file, which you need to send to [official evaluation server](https://competitions.codalab.org/competitions/19544) to calculate a score. For 2019 version, use this [server](https://competitions.codalab.org/competitions/20127) instead. The pretrained CFBI has been trained on YouTube-VOS using a large batch size (20), which boosts the performance (J&F) to `81.8%` on the validation split of YouTube-VOS 2018.
     * **DAVIS**: Download pretrained CFBI, [ResNet101-CFBI-DAVIS](https://drive.google.com/file/d/1cRC-kEH5Is2dSnHrFoLIbTxXp4imZfj3/view?usp=sharing), to `pretrain_models`, and then run `bash davis_eval.sh`. After the evaluation, please use [official code](https://github.com/davisvideochallenge/davis2017-evaluation) to calculate a score, which should be `81.9%` (J&F).
-    * **Fast CFBI**: For reduce the memory usage, we also provide a fast setting in `ytb_eval_fast.sh`. The fast setting enables using `float16` in the matching process of CFBI. Besides, we apply an `atrous strategy` in the global matching of CFBI for further efficiency (The discussion of atrous matching will be submitted to our Arxiv paper soon). The fast setting will save a large amount of memory and significantly improve the inference speed of CFBI. However, this will only lose very little performance.
+    * **Fast CFBI**: To reduce memory usage, we also provide a fast setting in `ytb_eval_fast.sh`. The fast setting enables using `float16` in the matching process of CFBI. Besides, we apply an `atrous strategy` in the global matching of CFBI for further efficiency (The discussion of atrous matching will be submitted to our Arxiv paper soon). The fast setting will save a large amount of memory and significantly improve the inference speed of CFBI. However, this will only lose very little performance.
     * Another way for saving memory is to increase the number of `--global_chunks`. This will not affect performance but will make the network speed slightly slower.
 
 ## Model Zoo
-**We recorded the inference speed of CFBI by using one NVIDIA Tesla V100 GPU. Besides, we used a multi-object speed instead of single-object. Almost every sequence in VOS datasets contains multiple objects, and CFBI is good at processing all of them simultaneously.**
+**We recorded the inference speed of CFBI by using one NVIDIA Tesla V100 GPU. Besides, we used a multi-object speed instead of a single-object. Almost every sequence in VOS datasets contains multiple objects, and CFBI is good at processing all of them simultaneously.**
 
-`F16` denotes using `float16` in the matching process. `Fast` means using both `float16` and `atrous strategy` in inference stage.
+`F16` denotes using `float16` in the matching process. `Fast` means using both `float16` and `atrous strategy` in the inference stage.
 
 YouTube-VOS (Eval on Val 2018):
+In the inference stage, we restricted the long edge of each frame to be no more than 1040 (800 * 1.3) pixels, which is the biggest random-scale size in the training and is smaller than the original size of YouTube-VOS (720p).
 
 **Name** | **Backbone**  | **J Seen** | **F Seen** | **J Unseen** | **F Unseen** | **Multi-Obj** <br> **FPS** | **Link** 
 ---------| :-----------: | :--------: | :--------: | :----------: | :----------: | :------------------------: | :------:
@@ -41,6 +42,7 @@ ResNet101-F16-CFBI | ResNet101-DeepLabV3+ | - | - | - | - | 4.62 (32.8%↑) | Th
 ResNet101-Fast-CFBI | ResNet101-DeepLabV3+ | - | - | - | - | **7.61 (118.7%↑)** | The same as above
 
 DAVIS (Eval on Val 2017):
+In the inference stage, we ran using the default size of DAVIS (480p).
 
 **Name** | **Backbone**  | **J score** | **F score** | **Multi-Obj** <br> **FPS** | **Link** 
 ---------| :-----------: | :---------: | :---------: | :------------------------: | :------:
