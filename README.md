@@ -35,20 +35,20 @@ Some video segmentation results:
 YouTube-VOS (Eval on Val 2018):
 In the inference stage, we restricted the long edge of each frame to be no more than 1040 (800 * 1.3) pixels, which is the biggest random-scale size in the training and is smaller than the original size of YouTube-VOS (720p).
 
-**Name** | **Backbone**  | **J Seen** | **F Seen** | **J Unseen** | **F Unseen** | **Multi-Obj** <br> **FPS** | **Link** 
----------| :-----------: | :--------: | :--------: | :----------: | :----------: | :------------------------: | :------:
-ResNet101-CFBI | ResNet101-DeepLabV3+ | **81.9** | 86.3 | **75.6** | **83.4** | 3.48 | [Click](https://drive.google.com/file/d/1ZhoNOcDXGG-PpFXhCixs-L3yA255Wup8/view?usp=sharin) 
-ResNet101-F16-CFBI | ResNet101-DeepLabV3+ | - | - | - | - | 4.62 (32.8%↑) | The same as above
-ResNet101-Fast-CFBI | ResNet101-DeepLabV3+ | **81.9** | **86.4** | **75.6** | 83.1 | **7.61 (118.7%↑)** | The same as above
+**Name** | **Backbone**  | **J Seen** | **F Seen** | **J Unseen** | **F Unseen** | **Mean** | **Multi-Obj** <br> **FPS** | **Link** 
+---------| :-----------: | :--------: | :--------: | :----------: | :----------: | :------: | :------------------------: | :------:
+ResNet101-CFBI | ResNet101-DeepLabV3+ | **81.9** | 86.3 | **75.6** | **83.4** | **81.8** | 3.48 | [Click](https://drive.google.com/file/d/1ZhoNOcDXGG-PpFXhCixs-L3yA255Wup8/view?usp=sharin) 
+ResNet101-F16-CFBI | ResNet101-DeepLabV3+ | - | - | - | - | - | 4.62 (32.8%↑) | The same as above
+ResNet101-Fast-CFBI | ResNet101-DeepLabV3+ | **81.9** | **86.4** | **75.6** | 83.1 |**81.8** | **7.61 (118.7%↑)** | The same as above
 
 DAVIS (Eval on Val 2017):
 In the inference stage, we ran using the default size of DAVIS (480p).
 
 **Name** | **Backbone**  | **J score** | **F score** | **Multi-Obj** <br> **FPS** | **Link** 
 ---------| :-----------: | :---------: | :---------: | :------------------------: | :------:
-ResNet101-CFBI-DAVIS | ResNet101-DeepLabV3+ | **79.3** | **84.5** | 5.88 | [Click](https://drive.google.com/file/d/1ZhoNOcDXGG-PpFXhCixs-L3yA255Wup8/view?usp=sharin) 
-ResNet101-F16-CFBI-DAVIS | ResNet101-DeepLabV3+ | 79.2 | 84.4 | 7.38 (25.5%↑) | The same as above
-ResNet101-Fast-CFBI-DAVIS | ResNet101-DeepLabV3+ | 77.0 | 82.7 | **10.18 (73.1%↑)** | The same as above
+ResNet101-CFBI-DAVIS | ResNet101-DeepLabV3+ | **79.3** | **84.5** | **81.9** | 5.88 | [Click](https://drive.google.com/file/d/1ZhoNOcDXGG-PpFXhCixs-L3yA255Wup8/view?usp=sharin) 
+ResNet101-F16-CFBI-DAVIS | ResNet101-DeepLabV3+ | 79.2 | 84.4 | 81.8 | 7.38 (25.5%↑) | The same as above
+ResNet101-Fast-CFBI-DAVIS | ResNet101-DeepLabV3+ | 77.0 | 82.7 | 79.9 | **10.18 (73.1%↑)** | The same as above
 
 Using `atrous strategy` on DAVIS leads to a big performance drop. The reason is that CFBI overfits the small DAVIS dataset. Training CFBI with `Fast` mode should significantly relief the performance drop.
 
