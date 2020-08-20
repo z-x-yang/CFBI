@@ -44,8 +44,8 @@ ResNet101-Fast-CFBI | ResNet101-DeepLabV3+ | **81.9** | **86.4** | **75.6** | 83
 DAVIS (Eval on Val 2017):
 In the inference stage, we ran using the default size of DAVIS (480p).
 
-**Name** | **Backbone**  | **J score** | **F score** | **Multi-Obj** <br> **FPS** | **Link** 
----------| :-----------: | :---------: | :---------: | :------------------------: | :------:
+**Name** | **Backbone**  | **J score** | **F score** | **Mean** | **Multi-Obj** <br> **FPS** | **Link** 
+---------| :-----------: | :---------: | :---------: | :------: | :------------------------: | :------:
 ResNet101-CFBI-DAVIS | ResNet101-DeepLabV3+ | **79.3** | **84.5** | **81.9** | 5.88 | [Click](https://drive.google.com/file/d/1ZhoNOcDXGG-PpFXhCixs-L3yA255Wup8/view?usp=sharin) 
 ResNet101-F16-CFBI-DAVIS | ResNet101-DeepLabV3+ | 79.2 | 84.4 | 81.8 | 7.38 (25.5%↑) | The same as above
 ResNet101-Fast-CFBI-DAVIS | ResNet101-DeepLabV3+ | 77.0 | 82.7 | 79.9 | **10.18 (73.1%↑)** | The same as above
