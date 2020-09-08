@@ -56,8 +56,6 @@ ResNet101-Fast-CFBI-DAVIS | ResNet101-DeepLabV3+ | 77.0 | 82.7 | 79.9 | **10.18 
 MobileNetV2-CFBI-DAVIS | MobileNetV2-DeepLabV3+ | 76.5 | 80.3 | 78.4 | 6.94 | [Click](https://drive.google.com/file/d/1uuKlRqrPubJVRXKVr53cXuNFEQmmThGG/view?usp=sharing)
 MobileNetV2-Fast-CFBI-DAVIS | MobileNetV2-DeepLabV3+ | 75.2 | 78.9 | 77.1 | **13.22 (90.5%↑)** | The same as above
 
-Using `atrous strategy` on DAVIS leads to a obvious performance drop. The reason is that DAVIS is so small (only 30 videos in Train split) and easy to be overfitted. Training CFBI with `Fast` mode should significantly relief the performance drop.
-
 ## Citing
 ```
 @inproceedings{yang2020collaborative,
