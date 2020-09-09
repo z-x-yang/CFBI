@@ -39,7 +39,7 @@ In the inference stage, we restricted the long edge of each frame to be no more 
 **Name** | **Backbone**  | **J Seen** | **F Seen** | **J Unseen** | **F Unseen** | **Mean** | **Multi-Obj** <br> **FPS** | **Link** 
 ---------| :-----------: | :--------: | :--------: | :----------: | :----------: | :------: | :------------------------: | :------:
 ResNet101-CFBI+ | ResNet101-DeepLabV3+ | **81.8** | **86.6** | **77.1** | **85.6** | **82.8** | 4.03 | Coming
-LabV3+ | **81.9** | 86.3 | **75.6** | **83.4** | **81.8** | 3.48 | [Click](https://drive.google.com/file/d/1ZhoNOcDXGG-PpFXhCixs-L3yA255Wup8/view?usp=sharin) 
+ResNet101-CFBI | ResNet101-DeepLabV3+ | **81.9** | 86.3 | **75.6** | **83.4** | **81.8** | 3.48 | [Click](https://drive.google.com/file/d/1ZhoNOcDXGG-PpFXhCixs-L3yA255Wup8/view?usp=sharin) 
 ResNet101-F16-CFBI | ResNet101-DeepLabV3+ |**81.9** | **86.4** | **75.6** | 83.3 | **81.8** | 4.62 (32.8%↑) | The same as above
 ResNet101-Fast-CFBI | ResNet101-DeepLabV3+ | **81.9** | **86.4** | **75.6** | 83.1 |**81.8** | **7.61 (118.7%↑)** | The same as above
 MobileNetV2-CFBI | MobileNetV2-DeepLabV3+ | 80.4 | 84.7 | 74.9 | 82.6 | 80.6 | 3.88 | [Click](https://drive.google.com/file/d/1L_pA2UzBbOWyyJyNmgnXqnqDvFfkdXpO/view?usp=sharing)
