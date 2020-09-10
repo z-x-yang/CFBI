@@ -30,7 +30,7 @@ Some video segmentation results:
 ## Model Zoo
 **We recorded the inference speed of CFBI by using one NVIDIA Tesla V100 GPU. Besides, we used a multi-object speed instead of a single-object. A large portion of the sequences in VOS datasets contains multiple objects, and CFBI is good at processing multiple objects simultaneously.**
 
-`F16` denotes using `float16` in the matching process. `Fast` means using both `float16` and `atrous strategy` in the inference stage.
+`F16` denotes using `float16` in the matching process. `Fast` means using both `float16` and `atrous strategy` in the inference stage. `MS` denotes using a multi-scale and flip strategy during inference.
 
 **YouTube-VOS** (Eval on Val 2018):
 
@@ -38,6 +38,7 @@ In the inference stage, we restricted the long edge of each frame to be no more 
 
 **Name** | **Backbone**  | **J Seen** | **F Seen** | **J Unseen** | **F Unseen** | **Mean** | **Multi-Obj** <br> **FPS** | **Link** 
 ---------| :-----------: | :--------: | :--------: | :----------: | :----------: | :------: | :------------------------: | :------:
+ResNet101-MS-CFBI+ | ResNet101-DeepLabV3+ | **82.8** | **87.5** | **77.3** | **85.7** | **83.3** | 0.48 (88.1%↓) | Coming
 ResNet101-CFBI+ | ResNet101-DeepLabV3+ | 81.8 | **86.6** | **77.1** | **85.6** | **82.8** | 4.03 | Coming
 ResNet101-F16-CFBI+ | ResNet101-DeepLabV3+ | **81.9** | **86.6** | **77.1** | **85.6** | **82.8** | 4.93 (22.3%↑) | Coming
 ResNet101-Fast-CFBI+ | ResNet101-DeepLabV3+ | **81.9** | **86.6** | **77.1** | 85.5 | **82.8** | 5.06 (25.6%↑) | Coming
