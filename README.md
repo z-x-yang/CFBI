@@ -28,7 +28,7 @@ Some video segmentation results:
     * Another way for saving memory is to increase the number of `--global_chunks`. This will not affect performance but will make the network speed slightly slower.
 
 ## Model Zoo
-**We recorded the inference speed of CFBI by using one NVIDIA Tesla V100 GPU. Besides, we used a multi-object speed instead of a single-object. Almost every sequence in VOS datasets contains multiple objects, and CFBI is good at processing all of them simultaneously.**
+**We recorded the inference speed of CFBI by using one NVIDIA Tesla V100 GPU. Besides, we used a multi-object speed instead of a single-object. A large portion of the sequences in VOS datasets contains multiple objects, and CFBI is good at processing multiple objects simultaneously.**
 
 `F16` denotes using `float16` in the matching process. `Fast` means using both `float16` and `atrous strategy` in the inference stage.
 
