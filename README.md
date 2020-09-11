@@ -38,10 +38,10 @@ In the inference stage, we restricted the long edge of each frame to be no more 
 
 **Name** | **Backbone**  | **J Seen** | **F Seen** | **J Unseen** | **F Unseen** | **Mean** | **Multi-Obj** <br> **FPS** | **Link** 
 ---------| :-----------: | :--------: | :--------: | :----------: | :----------: | :------: | :------------------------: | :------:
-ResNet101-MS-CFBI+ | ResNet101-DeepLabV3+ | **82.8** | **87.5** | **77.3** | **85.7** | **83.3** | 0.48 (88.1%↓) | Coming
 ResNet101-CFBI+ | ResNet101-DeepLabV3+ | 81.8 | **86.6** | **77.1** | **85.6** | **82.8** | 4.03 | Coming
-ResNet101-F16-CFBI+ | ResNet101-DeepLabV3+ | **81.9** | **86.6** | **77.1** | **85.6** | **82.8** | 4.93 (22.3%↑) | Coming
-ResNet101-Fast-CFBI+ | ResNet101-DeepLabV3+ | **81.9** | **86.6** | **77.1** | 85.5 | **82.8** | 5.06 (25.6%↑) | Coming
+ResNet101-MS-CFBI+ | ResNet101-DeepLabV3+ | **82.8** | **87.5** | **77.3** | **85.7** | **83.3** | 0.48 (88.1%↓) | The same as above
+ResNet101-F16-CFBI+ | ResNet101-DeepLabV3+ | **81.9** | **86.6** | **77.1** | **85.6** | **82.8** | 4.93 (22.3%↑) | The same as above
+ResNet101-Fast-CFBI+ | ResNet101-DeepLabV3+ | **81.9** | **86.6** | **77.1** | 85.5 | **82.8** | 5.06 (25.6%↑) | The same as above
 ResNet101-CFBI | ResNet101-DeepLabV3+ | **81.9** | 86.3 | 75.6 | 83.4 | 81.8 | 3.48 | [Click](https://drive.google.com/file/d/1ZhoNOcDXGG-PpFXhCixs-L3yA255Wup8/view?usp=sharin) 
 ResNet101-F16-CFBI | ResNet101-DeepLabV3+ |**81.9** | 86.4 | 75.6 | 83.3 | 81.8 | 4.62 (32.8%↑) | The same as above
 ResNet101-Fast-CFBI | ResNet101-DeepLabV3+ | **81.9** | 86.4 | 75.6 | 83.1 |81.8 | **7.61 (118.7%↑)** | The same as above
@@ -54,7 +54,9 @@ In the inference stage, we ran using the default size of DAVIS (480p).
 
 **Name** | **Backbone**  | **J score** | **F score** | **Mean** | **Multi-Obj** <br> **FPS** | **Link** 
 ---------| :-----------: | :---------: | :---------: | :------: | :------------------------: | :------:
-ResNet101-CFBI-DAVIS | ResNet101-DeepLabV3+ | **79.3** | **84.5** | **81.9** | 5.88 | [Click](https://drive.google.com/file/d/1ZhoNOcDXGG-PpFXhCixs-L3yA255Wup8/view?usp=sharin) 
+ResNet101-CFBI+-DAVIS | ResNet101-DeepLabV3+ | 79.9 | 85.0 | 82.5 | 5.56 | Coming
+ResNet101-NG-CFBI+-DAVIS | ResNet101-DeepLabV3+ | **80.1** | **85.4** | **82.8** | 4.34 (22.0%↓) | The same as above
+ResNet101-CFBI-DAVIS | ResNet101-DeepLabV3+ | 79.3 | 84.5 | 81.9 | 5.88 | [Click](https://drive.google.com/file/d/1ZhoNOcDXGG-PpFXhCixs-L3yA255Wup8/view?usp=sharin) 
 ResNet101-F16-CFBI-DAVIS | ResNet101-DeepLabV3+ | 79.2 | 84.4 | 81.8 | 7.38 (25.5%↑) | The same as above
 ResNet101-Fast-CFBI-DAVIS | ResNet101-DeepLabV3+ | 77.0 | 82.7 | 79.9 | **10.18 (73.1%↑)** | The same as above
 MobileNetV2-CFBI-DAVIS | MobileNetV2-DeepLabV3+ | 76.5 | 80.3 | 78.4 | 6.94 | [Click](https://drive.google.com/file/d/1uuKlRqrPubJVRXKVr53cXuNFEQmmThGG/view?usp=sharing)
