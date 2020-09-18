@@ -34,7 +34,7 @@ Some video segmentation results:
 
 **YouTube-VOS** (Eval on Val 2018):
 
-In the inference stage, we restricted the long edge of each frame to be no more than 1040 (1.3 * 800) pixels, which is the biggest random-scale size (1.3 * 480p) in the training and is smaller than the original size of YouTube-VOS (720p).
+In the inference stage, we restricted the long edge of each frame to be no more than 1040 (1.3 * 800) pixels, which is consistent with the biggest random-scale size (1.3 * 480p) in the training stage and is smaller than the original size of YouTube-VOS (720p).
 
 **Name** | **Backbone**  | **J Seen** | **F Seen** | **J Unseen** | **F Unseen** | **Mean** | **Multi-Obj** <br> **FPS** | **Link** 
 ---------| :-----------: | :--------: | :--------: | :----------: | :----------: | :------: | :------------------------: | :------:
