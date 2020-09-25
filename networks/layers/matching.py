@@ -143,7 +143,7 @@ def global_matching(
     Args:
         reference_embeddings: [height, width, embedding_dim],
           the embedding vectors for the reference frame.
-        query_embeddings: [n_query_images, height, width,
+        query_embeddings: [height, width,
           embedding_dim], the embedding vectors for the query frames.
         reference_labels: [height, width, obj_nums], 
           the class labels of the reference frame.
@@ -155,7 +155,7 @@ def global_matching(
         atrous_rate: Integer, the atrous rate of reference_embeddings.
         use_float16: Bool, if "True", use float16 type for matching.
     Returns:
-        nn_features: [n_query_images, ori_height, ori_width, n_objects, feature_dim].
+        nn_features: [1, ori_height, ori_width, n_objects, feature_dim].
     """
     
     assert (reference_embeddings.size()[:2] == reference_labels.size()[:2])
