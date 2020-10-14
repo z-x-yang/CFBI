@@ -1,7 +1,8 @@
 # CFBI: Collaborative Video Object Segmentation by Foreground-Background Integration
 The official implementation of Collaborative Video Object Segmentation by Foreground-Background Integration (ECCV 2020, Spotlight). [[paper](https://arxiv.org/abs/2003.08333)] [[demo (YouTube)](https://www.youtube.com/watch?v=xdHi68UFt50)][[demo (Bilibili)](https://www.bilibili.com/video/av456456973/)]
+Our journal extension, CFBI+, is availabel now. CFBI+ is more powerful and efficient than CFBI. [[paper](http://arxiv.org/abs/2010.06349)]
 
-CFBI works fine on both [PaddlePaddle](https://www.paddlepaddle.org.cn/) and PyTorch. Based on some necessary considerations, we only release the inference code of CFBI here.
+CFBI and CFBI+ work fine on both [PaddlePaddle](https://www.paddlepaddle.org.cn/) and PyTorch. Based on some necessary considerations, we only release the inference here.
 
 **If you want to get the training code of CFBI, please contact us by email: <zongxin.yang@student.uts.edu.au>. 
 And please inform us of your institution and the purpose of using CFBI in the email. 
@@ -68,6 +69,14 @@ MobileNetV2-Fast-CFBI-DAVIS | MobileNetV2-DeepLabV3+ | 75.2 | 78.9 | 77.1 | **13
   author={Yang, Zongxin and Wei, Yunchao and Yang, Yi},
   booktitle={Proceedings of the European Conference on Computer Vision},
   year={2020}
+}
+@misc{yang2020collaborative,
+      title={Collaborative Video Object Segmentation by Multi-Scale Foreground-Background Integration}, 
+      author={Zongxin Yang and Yunchao Wei and Yi Yang},
+      year={2020},
+      eprint={2010.06349},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
 }
 ```
 
