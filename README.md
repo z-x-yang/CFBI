@@ -64,13 +64,13 @@ MobileNetV2-Fast-CFBI-DAVIS | MobileNetV2-DeepLabV3+ | 75.2 | 78.9 | 77.1 | **13
 
 ## Citing
 ```
-@inproceedings{yang2020collaborative,
+@inproceedings{yang2020CFBI,
   title={Collaborative video object segmentation by foreground-background integration},
   author={Yang, Zongxin and Wei, Yunchao and Yang, Yi},
   booktitle={Proceedings of the European Conference on Computer Vision},
   year={2020}
 }
-@misc{yang2020collaborative,
+@misc{yang2020CFBIP,
       title={Collaborative Video Object Segmentation by Multi-Scale Foreground-Background Integration}, 
       author={Zongxin Yang and Yunchao Wei and Yi Yang},
       year={2020},
