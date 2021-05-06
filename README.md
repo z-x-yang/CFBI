@@ -71,13 +71,12 @@ MobileNetV2-Fast-CFBI-DAVIS | MobileNetV2-DeepLabV3+ | 75.2 | 78.9 | 77.1 | **13
   booktitle={Proceedings of the European Conference on Computer Vision},
   year={2020}
 }
-@misc{yang2020CFBIP,
-      title={Collaborative Video Object Segmentation by Multi-Scale Foreground-Background Integration}, 
-      author={Zongxin Yang and Yunchao Wei and Yi Yang},
-      year={2020},
-      eprint={2010.06349},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
+@article{yang2020CFBIP,
+  title={Collaborative Video Object Segmentation by Multi-Scale Foreground-Background Integration},
+  author={Zongxin Yang and Yunchao Wei and Yi Yang},
+  journal={IEEE transactions on pattern analysis and machine intelligence},
+  year={2021},
+  publisher={IEEE}
 }
 ```
 
