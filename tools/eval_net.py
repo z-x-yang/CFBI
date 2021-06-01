@@ -54,7 +54,10 @@ def main():
         cfg.TEST_MAX_SIZE = 800 * 1.3 if cfg.TEST_MULTISCALE == [1.] else 800
 
     cfg.MODEL_FLOAT16_MATCHING = args.float16
-    cfg.TEST_GLOBAL_ATROUS_RATE = args.global_atrous_rate
+    if 'cfbip' in cfg.MODEL_MODULE:
+        cfg.TEST_GLOBAL_ATROUS_RATE = [args.global_atrous_rate, 1, 1]
+    else:
+        cfg.TEST_GLOBAL_ATROUS_RATE = args.global_atrous_rate
     cfg.TEST_GLOBAL_CHUNKS = args.global_chunks
     cfg.TEST_LOCAL_PARALLEL = args.local_parallel
 

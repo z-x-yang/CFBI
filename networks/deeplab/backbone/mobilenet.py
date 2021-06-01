@@ -114,10 +114,21 @@ class MobileNetV2(nn.Module):
         self.low_level_features = self.features[0:4]
         self.high_level_features = self.features[4:]
 
-    def forward(self, x):
-        low_level_feat = self.low_level_features(x)
-        x = self.high_level_features(low_level_feat)
-        return x, low_level_feat
+        self.feautre_8x = self.features[4:7]
+        self.feature_16x = self.features[7:14]
+        self.feature_32x = self.features[14:]
+
+    def forward(self, x, return_mid_level=False):
+        if return_mid_level:
+            low_level_feat = self.low_level_features(x)
+            mid_level_feat = self.feautre_8x(low_level_feat)
+            x = self.feature_16x(mid_level_feat)
+            x = self.feature_32x(x)
+            return x, low_level_feat, mid_level_feat
+        else:
+            low_level_feat = self.low_level_features(x)
+            x = self.high_level_features(low_level_feat)
+            return x, low_level_feat
 
     def _load_pretrained_model(self):
         pretrain_dict = model_zoo.load_url('http://jeff95.me/models/mobilenet_v2-6a65762b.pth')

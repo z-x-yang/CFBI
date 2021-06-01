@@ -105,7 +105,7 @@ class ResNet(nn.Module):
 
         return nn.Sequential(*layers)
 
-    def forward(self, input):
+    def forward(self, input, return_mid_level=False):
         x = self.conv1(input)
         x = self.bn1(x)
         x = self.relu(x)
@@ -114,10 +114,13 @@ class ResNet(nn.Module):
         x = self.layer1(x)
         low_level_feat = x
         x = self.layer2(x)
+        mid_level_feat = x
         x = self.layer3(x)
         x = self.layer4(x)
-        return x, low_level_feat
-
+        if return_mid_level:
+            return x, low_level_feat, mid_level_feat
+        else:
+            return x, low_level_feat
     def _init_weight(self):
         for m in self.modules():
             if isinstance(m, nn.Conv2d):

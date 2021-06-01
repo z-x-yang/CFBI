@@ -24,12 +24,18 @@ class DeepLab(nn.Module):
         self.decoder = build_decoder(backbone, BatchNorm)
 
 
-    def forward(self, input):
-        x, low_level_feat = self.backbone(input)
-        x = self.aspp(x)
-        x = self.decoder(x, low_level_feat)
+    def forward(self, input, return_aspp=False):
+        if return_aspp:
+            x, low_level_feat, mid_level_feat = self.backbone(input, True)
+        else:
+            x, low_level_feat = self.backbone(input)
+        aspp_x = self.aspp(x)
+        x = self.decoder(aspp_x, low_level_feat)
 
-        return x, low_level_feat
+        if return_aspp:
+            return x, aspp_x, low_level_feat, mid_level_feat
+        else:
+            return x, low_level_feat
 
 
     def get_1x_lr_params(self):
