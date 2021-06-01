@@ -238,38 +238,81 @@ def global_matching_for_eval(
     all_reference_labels_flat = []
     ref_num = len(all_reference_labels)
     n_chunks *= ref_num
-    if atrous_rate > 1:
-        h_pad = (atrous_rate - h % atrous_rate) % atrous_rate
-        w_pad = (atrous_rate - w % atrous_rate) % atrous_rate
-        selected_points = torch.zeros(h + h_pad, w + w_pad, device=query_embeddings.device)
-        selected_points = selected_points.view((h + h_pad) // atrous_rate, atrous_rate, 
-                                               (w + w_pad) // atrous_rate, atrous_rate)
-        selected_points[:, 0, :, 0] = 1.
-        selected_points = selected_points.view(h + h_pad, w + w_pad, 1)[:h, :w]
-    else:
-        selected_points = torch.ones(h, w, 1, device=query_embeddings.device)
-
-    for reference_embeddings, reference_labels, idx in zip(all_reference_embeddings, all_reference_labels, range(ref_num)):
+    if atrous_obj_pixel_num > 0:
         if atrous_rate > 1:
-            is_big_obj = reference_labels.sum(dim=(0, 1)) > (atrous_obj_pixel_num * atrous_rate ** 2)
-            reference_labels[:, :, is_big_obj] = reference_labels[:, :, is_big_obj] * selected_points
+            h_pad = (atrous_rate - h % atrous_rate) % atrous_rate
+            w_pad = (atrous_rate - w % atrous_rate) % atrous_rate
+            selected_points = torch.zeros(h + h_pad, w + w_pad, device=query_embeddings.device)
+            selected_points = selected_points.view((h + h_pad) // atrous_rate, atrous_rate, 
+                                                   (w + w_pad) // atrous_rate, atrous_rate)
+            selected_points[:, 0, :, 0] = 1.
+            selected_points = selected_points.view(h + h_pad, w + w_pad, 1)[:h, :w]
 
-        reference_embeddings_flat = reference_embeddings.view(-1, embedding_dim)
-        reference_labels_flat = reference_labels.view(-1, obj_nums)
+        for reference_embeddings, reference_labels, idx in zip(all_reference_embeddings, all_reference_labels, range(ref_num)):
+            if atrous_rate > 1:
+                is_big_obj = reference_labels.sum(dim=(0, 1)) > (atrous_obj_pixel_num * atrous_rate ** 2)
+                reference_labels[:, :, is_big_obj] = reference_labels[:, :, is_big_obj] * selected_points
 
-        all_reference_embeddings_flat.append(reference_embeddings_flat)
-        all_reference_labels_flat.append(reference_labels_flat)
+            reference_embeddings_flat = reference_embeddings.view(-1, embedding_dim)
+            reference_labels_flat = reference_labels.view(-1, obj_nums)
 
-    reference_embeddings_flat = torch.cat(all_reference_embeddings_flat, dim=0)
-    reference_labels_flat = torch.cat(all_reference_labels_flat, dim=0)
+            all_reference_embeddings_flat.append(reference_embeddings_flat)
+            all_reference_labels_flat.append(reference_labels_flat)
+            
+        reference_embeddings_flat = torch.cat(all_reference_embeddings_flat, dim=0)
+        reference_labels_flat = torch.cat(all_reference_labels_flat, dim=0)
+    else:
+        if ref_num == 1:
+            reference_embeddings, reference_labels = all_reference_embeddings[0], all_reference_labels[0]
+            if atrous_rate > 1:
+                h_pad = (atrous_rate - h % atrous_rate) % atrous_rate
+                w_pad = (atrous_rate - w % atrous_rate) % atrous_rate
+                if h_pad > 0  or w_pad > 0:
+                    reference_embeddings = F.pad(reference_embeddings, (0, 0, 0, w_pad, 0, h_pad))
+                    reference_labels = F.pad(reference_labels, (0, 0, 0, w_pad, 0, h_pad))
+
+                reference_embeddings = reference_embeddings.view((h + h_pad) // atrous_rate, atrous_rate, 
+                                                                 (w + w_pad) // atrous_rate, atrous_rate, -1)
+                reference_labels = reference_labels.view((h + h_pad) // atrous_rate, atrous_rate, 
+                                                                 (w + w_pad) // atrous_rate, atrous_rate, -1)
+                reference_embeddings = reference_embeddings[:, 0, :, 0, :].contiguous()
+                reference_labels = reference_labels[:, 0, :, 0, :].contiguous()
+            reference_embeddings_flat = reference_embeddings.view(-1, embedding_dim)
+            reference_labels_flat = reference_labels.view(-1, obj_nums)
+        else:
+
+            for reference_embeddings, reference_labels, idx in zip(all_reference_embeddings, all_reference_labels, range(ref_num)):
+                if atrous_rate > 1:
+                    h_pad = (atrous_rate - h % atrous_rate) % atrous_rate
+                    w_pad = (atrous_rate - w % atrous_rate) % atrous_rate
+                    if h_pad > 0  or w_pad > 0:
+                        reference_embeddings = F.pad(reference_embeddings, (0, 0, 0, w_pad, 0, h_pad))
+                        reference_labels = F.pad(reference_labels, (0, 0, 0, w_pad, 0, h_pad))
+
+                    reference_embeddings = reference_embeddings.view((h + h_pad) // atrous_rate, atrous_rate, 
+                                                                     (w + w_pad) // atrous_rate, atrous_rate, -1)
+                    reference_labels = reference_labels.view((h + h_pad) // atrous_rate, atrous_rate, 
+                                                                     (w + w_pad) // atrous_rate, atrous_rate, -1)
+                    reference_embeddings = reference_embeddings[:, 0, :, 0, :].contiguous()
+                    reference_labels = reference_labels[:, 0, :, 0, :].contiguous()
+            
+
+                reference_embeddings_flat = reference_embeddings.view(-1, embedding_dim)
+                reference_labels_flat = reference_labels.view(-1, obj_nums)
+
+                all_reference_embeddings_flat.append(reference_embeddings_flat)
+                all_reference_labels_flat.append(reference_labels_flat)
+
+            reference_embeddings_flat = torch.cat(all_reference_embeddings_flat, dim=0)
+            reference_labels_flat = torch.cat(all_reference_labels_flat, dim=0)
+
+    
 
     query_embeddings_flat = query_embeddings.view(-1, embedding_dim)
     
     all_ref_fg = torch.sum(reference_labels_flat, dim=1, keepdim=True) > 0.9
-
     reference_labels_flat = torch.masked_select(reference_labels_flat, 
         all_ref_fg.expand(-1, obj_nums)).view(-1, obj_nums)
-
     if reference_labels_flat.size(0) == 0:
         return torch.ones(1, h, w, obj_nums, 1, device=all_ref_fg.device)
     reference_embeddings_flat = torch.masked_select(reference_embeddings_flat, 

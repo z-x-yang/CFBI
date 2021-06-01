@@ -27,7 +27,7 @@ class MultiRestrictSize(object):
                     short_edge = w
                 else:
                     short_edge = h
-                if short_edge < self.min_size:
+                if short_edge > self.min_size:
                     sc = float(self.min_size) / short_edge
             else:
                 if h > w:
