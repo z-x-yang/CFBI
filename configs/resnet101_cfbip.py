@@ -112,7 +112,7 @@ class Configuration():
         self.TEST_GLOBAL_MATCHING_CHUNK = [4, 1, 1]
         self.TEST_GLOBAL_ATROUS_RATE = [2, 1, 1]
         self.TEST_LOCAL_ATROUS_RATE = [2, 1, 1]
-        self.TEST_GLOBAL_MATCHING_MIN_PIXEL = 100
+        self.TEST_GLOBAL_MATCHING_MIN_PIXEL = 0
         self.TEST_LOCAL_PARALLEL = True
 
         # dist

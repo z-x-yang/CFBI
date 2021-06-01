@@ -27,6 +27,7 @@ def main():
     parser.set_defaults(float16=False)
     parser.add_argument('--global_atrous_rate', type=int, default=1)
     parser.add_argument('--global_chunks', type=int, default=4)
+    parser.add_argument('--min_matching_pixels', type=int, default=0)
     parser.add_argument('--no_local_parallel', dest='local_parallel', action='store_false')
     parser.set_defaults(local_parallel=True)
     args = parser.parse_args()
@@ -60,6 +61,9 @@ def main():
         cfg.TEST_GLOBAL_ATROUS_RATE = args.global_atrous_rate
     cfg.TEST_GLOBAL_CHUNKS = args.global_chunks
     cfg.TEST_LOCAL_PARALLEL = args.local_parallel
+
+    if args.min_matching_pixels > 0:
+        cfg.TEST_GLOBAL_MATCHING_MIN_PIXEL = args.min_matching_pixels
 
     evaluator = Evaluator(cfg=cfg)
     evaluator.evaluating()
