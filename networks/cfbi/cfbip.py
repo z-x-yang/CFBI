@@ -42,8 +42,43 @@ class CFBIP(nn.Module):
 
     def forward(self, input, ref_frame_label, previous_frame_mask, current_frame_mask,
             gt_ids, step=0, tf_board=False):
+        x_4x, x_8x, x_16x, low_level = self.extract_feature(input)
 
-        return None, None, None
+        ref_frame_embedding_4x, previous_frame_embedding_4x, current_frame_embedding_4x = torch.split(x_4x, split_size_or_sections=int(low_level.size(0)/3), dim=0)
+        ref_frame_embedding_8x, previous_frame_embedding_8x, current_frame_embedding_8x = torch.split(x_8x, split_size_or_sections=int(low_level.size(0)/3), dim=0)
+        ref_frame_embedding_16x, previous_frame_embedding_16x, current_frame_embedding_16x = torch.split(x_16x, split_size_or_sections=int(low_level.size(0)/3), dim=0)
+
+        ref_frame_embeddings = [ref_frame_embedding_4x, ref_frame_embedding_8x, ref_frame_embedding_16x]
+        previous_frame_embeddings = [previous_frame_embedding_4x, previous_frame_embedding_8x, previous_frame_embedding_16x]
+        current_frame_embeddings = [current_frame_embedding_4x, current_frame_embedding_8x, current_frame_embedding_16x]
+
+        _, _, current_low_level = torch.split(low_level,split_size_or_sections=int(low_level.size(0)/3), dim=0)
+
+        bs,c,h,w = current_frame_embedding_4x.size()
+        tmp_dic, boards = self.before_seghead_process(
+                    ref_frame_embeddings, 
+                    previous_frame_embeddings, 
+                    current_frame_embeddings, 
+                    ref_frame_label, 
+                    previous_frame_mask,
+                    gt_ids,
+                    current_low_level=current_low_level, 
+                    tf_board=tf_board)
+
+        label_dic=[]
+        all_pred = []
+        for i in range(bs):
+            tmp_pred_logits = tmp_dic[i]
+            tmp_pred_logits = nn.functional.interpolate(tmp_pred_logits, size=(input.shape[2],input.shape[3]), mode='bilinear', align_corners=True)
+            tmp_dic[i] = tmp_pred_logits
+            pred = tmp_dic[i]
+            preds_s = torch.argmax(pred,dim=1)
+            all_pred.append(preds_s)
+            label_tmp, obj_num = current_frame_mask[i], gt_ids[i]
+            label_dic.append(label_tmp.long())
+        all_pred = torch.cat(all_pred, dim=0)
+
+        return self.criterion(tmp_dic, label_dic, step), all_pred, boards
 
     def forward_for_eval(self, ref_embeddings, ref_masks, prev_embedding, prev_mask, current_frame,
                          pred_size, gt_ids, is_flipped=False):
