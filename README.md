@@ -1,4 +1,4 @@
-# CFBI: Collaborative Video Object Segmentation by Foreground-Background Integration
+# CFBI(+): Collaborative Video Object Segmentation by (Multi-scale) Foreground-Background Integration
 The official implementation of Collaborative Video Object Segmentation by Foreground-Background Integration (ECCV 2020, Spotlight). [[paper](https://arxiv.org/abs/2003.08333)] [[demo (YouTube)](https://www.youtube.com/watch?v=xdHi68UFt50)][[demo (Bilibili)](https://www.bilibili.com/video/av456456973/)]
 
 Our enhanced version, CFBI+ (accepted by TPAMI), is availabel now. CFBI+ is more powerful and efficient than CFBI. [[paper](http://arxiv.org/abs/2010.06349)]
