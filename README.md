@@ -32,7 +32,7 @@ Some video segmentation results:
 ## Model Zoo
 **We recorded the inference speed of CFBI by using one NVIDIA Tesla V100 GPU. Besides, we used a multi-object speed instead of a single-object. A large portion of the sequences in VOS datasets contains multiple objects, and CFBI is good at processing multiple objects simultaneously.**
 
-`F16` denotes using `float16` in the matching process. `Fast` means using both `float16` and `atrous strategy` in the inference stage. `MS` denotes using a multi-scale and flip strategy during inference.
+`F16` denotes using `float16` in the matching process. `Fast` means using both `float16` and `atrous strategy` in the inference stage. `MS` denotes using a multi-scale and flip strategy during inference (additional evaluation args `--ms 1. 1.15 1.3 1.5 --flip`).
 
 **YouTube-VOS** (Eval on Val 2018):
 
