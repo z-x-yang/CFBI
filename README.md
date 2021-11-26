@@ -5,7 +5,7 @@ Our enhanced version, CFBI+ (accepted by TPAMI), is availabel now. CFBI+ is more
 
 CFBI and CFBI+ work fine on both [PaddlePaddle](https://www.paddlepaddle.org.cn/) and PyTorch. Based on some necessary considerations, we only release the inference here.
 
-**If you want to get the training code of CFBI, please contact us by email: <zongxin.yang@student.uts.edu.au>. 
+**If you want to get the training code of CFBI, please contact us by email: <zongxinyang1996@gmail.com>. 
 And please inform us of your institution and the purpose of using CFBI in the email. 
 Thank you for your understanding!**
 
