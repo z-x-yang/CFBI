@@ -1,7 +1,7 @@
 # CFBI(+): Collaborative Video Object Segmentation by (Multi-scale) Foreground-Background Integration
 The official implementation of Collaborative Video Object Segmentation by (Multi-scale) Foreground-Background Integration. [[paper](http://arxiv.org/abs/2010.06349)] (TPAMI) [[paper](https://arxiv.org/abs/2003.08333)] (ECCV 2020, Spotlight)  [[demo (YouTube)](https://www.youtube.com/watch?v=xdHi68UFt50)][[demo (Bilibili)](https://www.bilibili.com/video/av456456973/)]
 
-For VOS-related applications or research, we also recommend our latest VOS framework, [AOT](https://github.com/z-x-yang/AOT), whose performance and efficiency are much better than CFBI(+).
+For VOS-related applications or research, we also recommend our latest VOS framework, [AOT (NeurIPS 2021)](https://github.com/z-x-yang/AOT), whose performance and efficiency are much better than CFBI(+).
 
 **Based on some necessary considerations, we only release the inference here. If you want to get the training code of CFBI, please contact us by email: <zongxinyang1996@gmail.com>. And please inform us of your institution and the purpose of using CFBI in the email. Thank you for your understanding!**
 
