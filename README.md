@@ -1,13 +1,9 @@
 # CFBI(+): Collaborative Video Object Segmentation by (Multi-scale) Foreground-Background Integration
-The official implementation of Collaborative Video Object Segmentation by Foreground-Background Integration (ECCV 2020, Spotlight). [[paper](https://arxiv.org/abs/2003.08333)] [[demo (YouTube)](https://www.youtube.com/watch?v=xdHi68UFt50)][[demo (Bilibili)](https://www.bilibili.com/video/av456456973/)]
+The official implementation of Collaborative Video Object Segmentation by (Multi-scale) Foreground-Background Integration. [[paper](http://arxiv.org/abs/2010.06349)] (TPAMI) [[paper](https://arxiv.org/abs/2003.08333)] (ECCV 2020, Spotlight)  [[demo (YouTube)](https://www.youtube.com/watch?v=xdHi68UFt50)][[demo (Bilibili)](https://www.bilibili.com/video/av456456973/)]
 
-Our enhanced version, CFBI+ (accepted by TPAMI), is availabel now. CFBI+ is more powerful and efficient than CFBI. [[paper](http://arxiv.org/abs/2010.06349)]
+For VOS-related applications or research, we also recommend our latest VOS framework, [AOT](https://github.com/z-x-yang/AOT), whose performance and efficiency are much better than CFBI(+).
 
-CFBI and CFBI+ work fine on both [PaddlePaddle](https://www.paddlepaddle.org.cn/) and PyTorch. Based on some necessary considerations, we only release the inference here.
-
-**If you want to get the training code of CFBI, please contact us by email: <zongxinyang1996@gmail.com>. 
-And please inform us of your institution and the purpose of using CFBI in the email. 
-Thank you for your understanding!**
+**Based on some necessary considerations, we only release the inference here. If you want to get the training code of CFBI, please contact us by email: <zongxinyang1996@gmail.com>. And please inform us of your institution and the purpose of using CFBI in the email. Thank you for your understanding!**
 
 Framework:
 <div align=center><img src="https://github.com/z-x-yang/CFBI/raw/master/utils/overview.png" width="80%"/></div>
