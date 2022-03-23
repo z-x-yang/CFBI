@@ -369,14 +369,14 @@ def local_pairwise_distances(
 
     height, width, _ = x.size()
     dists = []
-    for y in range(2 * pad_max_distance // atrous_rate + 1):
-        y_start = y * atrous_rate
-        y_end = y_start + height
-        y_slice = padded_y[y_start:y_end]
-        for x in range(2 * max_distance + 1):
-            x_start = x * atrous_rate
-            x_end = x_start + width
-            offset_y = y_slice[:, x_start:x_end]
+    for i in range(2 * pad_max_distance // atrous_rate + 1):
+        i_start = i * atrous_rate
+        i_end = i_start + height
+        y_slice = padded_y[i_start:i_end]
+        for j in range(2 * max_distance + 1):
+            j_start = j * atrous_rate
+            j_end = j_start + width
+            offset_y = y_slice[:, j_start:j_end]
             dist = torch.sum(torch.pow((x-offset_y),2), dim=2)
             dists.append(dist)
     dists = torch.stack(dists, dim=2)
